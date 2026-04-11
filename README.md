@@ -10,11 +10,6 @@ peekls is a command-line tool that enhances `ls` by providing ignore-aware file 
 
 ## Usage
 ```
--l, --long            Display detailed file information
--a, --all             　Show hidden files
--I, --ignore          Respect .gitignore and .dockerignore
---show-ignored        Show ignored files as well
-
 --readme-tagline      Show tagline from README.md in directories
 --pdf-title           Show title of PDF files
 
