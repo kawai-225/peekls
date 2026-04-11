@@ -16,7 +16,6 @@ Unlike the standard ls command, peekls provides:
 
 This tool helps users quickly understand directory contents without opening files.
 
-⸻
 
 
 ## Usage
