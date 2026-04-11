@@ -7,12 +7,17 @@ This is a CLI tool that reimagines ls with smarter file listing and lightweight 
 This is a CLI tool that 
 
 ## Description
-peekls is a command-line tool for listing files in a directory.
+peekls is a command-line tool for listing files in a directory with additional useful features.
 
-It extends the standard `ls` command by adding useful features such as
-human-readable file sizes, sorting options, and simple previews for files.
+Unlike the standard ls command, peekls provides:
+	•	Ignore-aware listing using .gitignore and .dockerignore
+	•	README tagline preview for directories
+	•	PDF title preview for PDF files
 
-The tool helps users understand directory contents more easily.
+This tool helps users quickly understand directory contents without opening files.
+
+⸻
+
 
 ## Usage
 ```
@@ -20,7 +25,6 @@ The tool helps users understand directory contents more easily.
 -a, --all             　Show hidden files
 -I, --ignore          Respect .gitignore and .dockerignore
 --show-ignored        Show ignored files as well
-
 
 --readme-tagline      Show tagline from README.md in directories
 --pdf-title           Show title of PDF files
