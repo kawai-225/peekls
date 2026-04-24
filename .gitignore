@@ -71,4 +71,4 @@ Cargo.lock
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,macos,visualstudiocode
-.DS_Store
+
