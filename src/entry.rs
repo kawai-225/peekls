@@ -38,6 +38,9 @@ impl Entry {
     fn format_long(&self) -> String {
         format!("{:<6} {:>10} {}", self.kind.label(), self.size, self.name)
     }
+    pub fn is_hidden(&self) -> bool {
+        self.name.starts_with('.')
+    }
 }
 
 impl EntryKind {

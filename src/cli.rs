@@ -11,16 +11,16 @@ pub struct Args {
 
     #[arg(short = 'l', long = "long")]
     pub long: bool,
+
+    #[arg(short = 'a', long = "all")]
+    pub all: bool,
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
-
-    let entries = list_directory(&args.path)?;
-
+    let entries = list_directory(&args.path, args.all)?;
     for entry in entries {
         println!("{}", entry.format(args.long));
     }
-
     Ok(())
 }
