@@ -17,11 +17,19 @@ pub struct Args {
 
     #[arg(long = "show-ignored")]
     pub show_ignored: bool,
+
+    #[arg(short = 'I', long = "ignore")]
+    pub ignore_patterns: Vec<String>,
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
-    let entries = list_directory(&args.path, args.all, args.show_ignored)?;
+    let entries = list_directory(
+        &args.path,
+        args.all,
+        args.show_ignored,
+        &args.ignore_patterns,
+    )?;
     for entry in entries {
         println!("{}", entry.format(args.long));
     }
