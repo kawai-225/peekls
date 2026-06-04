@@ -14,11 +14,14 @@ pub struct Args {
 
     #[arg(short = 'a', long = "all")]
     pub all: bool,
+
+    #[arg(long = "show-ignored")]
+    pub show_ignored: bool,
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
-    let entries = list_directory(&args.path, args.all)?;
+    let entries = list_directory(&args.path, args.all, args.show_ignored)?;
     for entry in entries {
         println!("{}", entry.format(args.long));
     }
