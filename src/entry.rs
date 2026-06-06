@@ -4,6 +4,7 @@ use std::path::{Path, PathBuf};
 
 pub struct Entry {
     pub name: String,
+    pub path: PathBuf,
     size: u64,
     kind: EntryKind,
 }
@@ -22,6 +23,7 @@ impl Entry {
 
         Ok(Self {
             name,
+            path,
             size: metadata.len(),
             kind,
         })

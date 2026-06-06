@@ -3,6 +3,7 @@ use std::error::Error;
 use std::path::PathBuf;
 
 use crate::list_directory;
+use crate::pdf;
 use crate::readme;
 
 #[derive(Parser)]
@@ -24,6 +25,9 @@ pub struct Args {
 
     #[arg(long = "readme-tagline")]
     pub readme_tagline: bool,
+
+    #[arg(long = "pdf-title")]
+    pub pdf_title: bool,
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
@@ -34,8 +38,17 @@ pub fn run() -> Result<(), Box<dyn Error>> {
         args.show_ignored,
         &args.ignore_patterns,
     )?;
-    for entry in entries {
+
+    for entry in &entries {
         println!("{}", entry.format(args.long));
+    }
+
+    if args.pdf_title {
+        for entry in &entries {
+            if let Some(title) = pdf::read_title(&entry.path) {
+                println!("PDF: {} - {}", entry.name, title);
+            }
+        }
     }
 
     if args.readme_tagline

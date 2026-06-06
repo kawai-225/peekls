@@ -1,6 +1,7 @@
 pub mod cli;
 pub mod entry;
 pub mod ignore;
+pub mod pdf;
 pub mod readme;
 
 use std::error::Error;

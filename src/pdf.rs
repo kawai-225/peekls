@@ -30,9 +30,5 @@ fn object_to_string(object: &Object) -> Option<String> {
 fn clean_string(bytes: &[u8]) -> Option<String> {
     let title = String::from_utf8_lossy(bytes).trim().to_string();
 
-    if title.is_empty() {
-        None
-    } else {
-        Some(title)
-    }
+    if title.is_empty() { None } else { Some(title) }
 }
