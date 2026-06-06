@@ -39,25 +39,59 @@ pub fn run() -> Result<(), Box<dyn Error>> {
         &args.ignore_patterns,
     )?;
 
-    for entry in &entries {
-        println!("{}", entry.format(args.long));
-    }
-
-    if args.pdf_title {
-        for entry in &entries {
-            if let Some(title) = pdf::read_title(&entry.path) {
-                println!("PDF: {}", entry.name);
-                println!("  Title: {title}");
-            }
-        }
-    }
-
-    if args.readme_tagline
-        && let Some(line) = readme::read_tagline(&args.path)
-    {
-        println!();
-        println!("README: {line}");
-    }
+    let output = format_output(&args, &entries);
+    println!("{output}");
 
     Ok(())
+}
+
+fn format_output(args: &Args, entries: &[crate::entry::Entry]) -> String {
+    let mut lines = format_entries(entries, args.long);
+
+    if let Some(readme_line) = format_readme(args) {
+        lines.push(String::new());
+        lines.push(readme_line);
+    }
+
+    let pdf_lines = format_pdf_titles(args, entries);
+
+    if !pdf_lines.is_empty() {
+        lines.push(String::new());
+        lines.extend(pdf_lines);
+    }
+
+    lines.join("\n")
+}
+
+fn format_entries(entries: &[crate::entry::Entry], long: bool) -> Vec<String> {
+    entries.iter().map(|entry| entry.format(long)).collect()
+}
+
+fn format_readme(args: &Args) -> Option<String> {
+    if !args.readme_tagline {
+        return None;
+    }
+
+    readme::read_tagline(&args.path).map(|line| format!("README: {line}"))
+}
+
+fn format_pdf_titles(args: &Args, entries: &[crate::entry::Entry]) -> Vec<String> {
+    if !args.pdf_title {
+        return Vec::new();
+    }
+
+    entries
+        .iter()
+        .filter_map(format_pdf_title)
+        .flatten()
+        .collect()
+}
+
+fn format_pdf_title(entry: &crate::entry::Entry) -> Option<Vec<String>> {
+    let title = pdf::read_title(&entry.path)?;
+
+    Some(vec![
+        format!("PDF: {}", entry.name),
+        format!("  Title: {title}"),
+    ])
 }
