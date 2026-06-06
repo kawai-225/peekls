@@ -46,7 +46,8 @@ pub fn run() -> Result<(), Box<dyn Error>> {
     if args.pdf_title {
         for entry in &entries {
             if let Some(title) = pdf::read_title(&entry.path) {
-                println!("PDF: {} - {}", entry.name, title);
+                println!("PDF: {}", entry.name);
+                println!("  Title: {title}");
             }
         }
     }
