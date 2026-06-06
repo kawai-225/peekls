@@ -20,6 +20,9 @@ pub struct Args {
 
     #[arg(short = 'I', long = "ignore")]
     pub ignore_patterns: Vec<String>,
+
+    #[arg(long = "readme-tagline")]
+    pub readme_tagline: bool,
 }
 
 pub fn run() -> Result<(), Box<dyn Error>> {
@@ -29,6 +32,7 @@ pub fn run() -> Result<(), Box<dyn Error>> {
         args.all,
         args.show_ignored,
         &args.ignore_patterns,
+        args.readme_tagline,
     )?;
     for entry in entries {
         println!("{}", entry.format(args.long));

@@ -1,6 +1,7 @@
 pub mod cli;
 pub mod entry;
 pub mod ignore;
+pub mod readme;
 
 use std::error::Error;
 use std::fs;
@@ -13,6 +14,7 @@ pub fn list_directory(
     show_hidden: bool,
     show_ignored: bool,
     ignore_patterns: &[String],
+    readme_tagline: bool,
 ) -> Result<Vec<Entry>, Box<dyn Error>> {
     let gitignore = ignore::build_gitignore(path);
     let mut entries = Vec::new();
@@ -36,6 +38,13 @@ pub fn list_directory(
     }
 
     entries.sort_by(|a, b| a.name.cmp(&b.name));
+
+    if readme_tagline 
+        && let Some(line) = readme::read_tagline(path) {
+            println!("README.md: {line}");
+        
+    }
+
     Ok(entries)
 }
 

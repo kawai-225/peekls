@@ -25,8 +25,5 @@ fn tagline_from_file(path: &Path) -> Option<String> {
 }
 
 fn clean_line(line: &str) -> String {
-    line.trim()
-        .trim_start_matches('#')
-        .trim()
-        .to_string()
+    line.trim().trim_start_matches('#').trim().to_string()
 }
