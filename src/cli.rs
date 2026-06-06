@@ -3,6 +3,7 @@ use std::error::Error;
 use std::path::PathBuf;
 
 use crate::list_directory;
+use crate::readme;
 
 #[derive(Parser)]
 pub struct Args {
@@ -32,10 +33,17 @@ pub fn run() -> Result<(), Box<dyn Error>> {
         args.all,
         args.show_ignored,
         &args.ignore_patterns,
-        args.readme_tagline,
     )?;
     for entry in entries {
         println!("{}", entry.format(args.long));
     }
+
+    if args.readme_tagline
+        && let Some(line) = readme::read_tagline(&args.path)
+    {
+        println!();
+        println!("README: {line}");
+    }
+
     Ok(())
 }
