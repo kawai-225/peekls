@@ -1,79 +1,92 @@
 # peekls
 
-peekls は、通常の ls コマンドよりも「ファイルやディレクトリの中身の意味」が分かりやすい一覧表示を行う CLI ツールです。
+peekls is a CLI tool that provides a more meaningful directory listing than the standard ls command.
 
-README のタグラインや PDF のタイトルなどを表示し、ディレクトリの内容を素早く把握できることを目的としています。
+Instead of only displaying file and directory names, peekls can show additional information such as README taglines and PDF titles, helping users quickly understand the contents of a directory.
 
 ## Features
 
-- ファイル・ディレクトリ一覧表示
-- -l による詳細表示
-- -a による隠しファイル表示
-- .gitignore を考慮した一覧表示
-- --show-ignored による ignore ファイル表示
-- -I, --ignore による任意ファイルの非表示
-- --readme-tagline による README のタグライン表示
-- --pdf-title による PDF タイトル表示
+- Display files and directories
+- Long format listing (-l, --long)
+- Show hidden files (-a, --all)
+- Respect .gitignore rules
+- Show ignored files (--show-ignored)
+- Ignore specific files (-I, --ignore)
+- Display README taglines (--readme-tagline)
+- Display PDF titles (--pdf-title)
+
+## Installation
+
+bash git clone https://github.com/kawai-225/peekls.git cd peekls cargo build 
 
 ## Usage
 
-一覧表示
+Display files and directories:
 
-bash peekls . 
+bash cargo run -- . 
 
-詳細表示
+Display detailed information:
 
-bash peekls . -l 
+bash cargo run -- . -l 
 
-隠しファイルを表示
+Show hidden files:
 
-bash peekls . -a 
+bash cargo run -- . -a 
 
-ignore 対象も表示
+Show ignored files:
 
-bash peekls . --show-ignored 
+bash cargo run -- . --show-ignored 
 
-特定ファイルを非表示
+Ignore a specific file:
 
-bash peekls . -I README.md 
+bash cargo run -- . -I README.md 
 
-README タグライン表示
+Display the README tagline:
 
-bash peekls . --readme-tagline 
+bash cargo run -- . --readme-tagline 
 
-PDF タイトル表示
+Display PDF titles:
 
-bash peekls . --pdf-title 
+bash cargo run -- . --pdf-title 
 
 ## Example
 
-text Cargo.toml LICENSE README.md icom.pdf src  README: peekls  PDF: icom.pdf   Title: icom.png 
+text Cargo.toml LICENSE README.md sample.pdf src  README: peekls  PDF: sample.pdf   Title: Sample Document 
 
-## Test
+## Testing
 
-単体テスト・結合テスト・システムテストを実装しています。
+Run all tests:
 
 bash cargo test 
 
-静的解析
+Run static analysis:
 
 bash cargo clippy 
 
-## Development
+Format source code:
 
-開発方針
+bash cargo fmt 
 
-- 関数は20行以内を目安に分割
-- 処理結果は関数の返り値として返す
-- cargo clippy の警告を解消する
-- Git のコミット履歴を残しながら開発する
-:::  ---  この README なら、  - 何を作ったのか - どんな機能があるのか - どう使うのか - テストしているか  が一目で分かります。  書き換えたら、 bash
-cargo test
-cargo clippy
+## Project Structure
 
-git add README.md
-git commit -m "Improve project README"
-git push
+text src/ ├── main.rs      # CLI entry point ├── cli.rs       # Command-line argument handling ├── lib.rs       # Core functionality ├── entry.rs     # File and directory information ├── ignore.rs    # .gitignore support ├── readme.rs    # README tagline extraction └── pdf.rs       # PDF title extraction  tests/ ├── integration_test.rs └── system_cli.rs 
+
+## Development Policy
+
+- Keep functions short and focused (approximately 20 lines or less)
+- Return results from functions whenever possible
+- Resolve all cargo clippy warnings
+- Maintain a clear Git commit history
+- Add tests for new functionality
 ```
+:::
 
-で良いと思います。
+これなら課題で要求されている
+
+- CLIツールの説明
+- 使用方法
+- テスト方法
+- ディレクトリ構成
+- 開発方針
+
+がすべて含まれていて、GitHubのREADMEとして十分見栄えがします。
