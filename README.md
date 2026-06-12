@@ -22,33 +22,46 @@ bash git clone https://github.com/kawai-225/peekls.git cd peekls cargo build
 ## Usage
 
 Display files and directories:
-:::
-bash cargo run -- . 
-:::
+
+```bash
+cargo run -- .
+```
 
 Display detailed information:
 
-bash cargo run -- . -l 
+```bash
+cargo run -- . -l
+```
 
 Show hidden files:
 
-bash cargo run -- . -a 
+```bash
+cargo run -- . -a
+```
 
 Show ignored files:
 
-bash cargo run -- . --show-ignored 
+```bash
+cargo run -- . --show-ignored
+```
 
 Ignore a specific file:
 
-bash cargo run -- . -I README.md 
+```bash
+cargo run -- . -I README.md
+```
 
 Display the README tagline:
 
-bash cargo run -- . --readme-tagline 
+```bash
+cargo run -- . --readme-tagline
+```
 
 Display PDF titles:
 
-bash cargo run -- . --pdf-title 
+```bash
+cargo run -- . --pdf-title
+```
 
 
 
