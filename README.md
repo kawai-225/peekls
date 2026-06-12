@@ -1,20 +1,79 @@
 # peekls
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Rust](https://img.shields.io/badge/Rust-1.70+-orange.svg)
-[![Coverage Status](https://coveralls.io/repos/github/kawai-225/peekls/badge.svg?branch=main)](https://coveralls.io/github/kawai-225/peekls?branch=main)
 
+peekls は、通常の ls コマンドよりも「ファイルやディレクトリの中身の意味」が分かりやすい一覧表示を行う CLI ツールです。
 
-This is a CLI tool that reimagines ls with smarter file listing and lightweight previews.
+README のタグラインや PDF のタイトルなどを表示し、ディレクトリの内容を素早く把握できることを目的としています。
 
+## Features
 
-## Description
-peekls is a command-line tool that enhances `ls` by providing ignore-aware file listing and lightweight previews such as README taglines and PDF titles. It helps users quickly understand directory contents without opening files.It is developed in Rust.
+- ファイル・ディレクトリ一覧表示
+- -l による詳細表示
+- -a による隠しファイル表示
+- .gitignore を考慮した一覧表示
+- --show-ignored による ignore ファイル表示
+- -I, --ignore による任意ファイルの非表示
+- --readme-tagline による README のタグライン表示
+- --pdf-title による PDF タイトル表示
 
 ## Usage
-```
---readme-tagline      Show tagline from README.md in directories
---pdf-title           Show title of PDF files
 
--h, --help            Show help message
--V, --version         Show version
+一覧表示
+
+bash peekls . 
+
+詳細表示
+
+bash peekls . -l 
+
+隠しファイルを表示
+
+bash peekls . -a 
+
+ignore 対象も表示
+
+bash peekls . --show-ignored 
+
+特定ファイルを非表示
+
+bash peekls . -I README.md 
+
+README タグライン表示
+
+bash peekls . --readme-tagline 
+
+PDF タイトル表示
+
+bash peekls . --pdf-title 
+
+## Example
+
+text Cargo.toml LICENSE README.md icom.pdf src  README: peekls  PDF: icom.pdf   Title: icom.png 
+
+## Test
+
+単体テスト・結合テスト・システムテストを実装しています。
+
+bash cargo test 
+
+静的解析
+
+bash cargo clippy 
+
+## Development
+
+開発方針
+
+- 関数は20行以内を目安に分割
+- 処理結果は関数の返り値として返す
+- cargo clippy の警告を解消する
+- Git のコミット履歴を残しながら開発する
+:::  ---  この README なら、  - 何を作ったのか - どんな機能があるのか - どう使うのか - テストしているか  が一目で分かります。  書き換えたら、 bash
+cargo test
+cargo clippy
+
+git add README.md
+git commit -m "Improve project README"
+git push
 ```
+
+で良いと思います。
