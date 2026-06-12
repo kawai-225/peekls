@@ -104,18 +104,6 @@ Current test coverage includes:
 - System Tests
   - CLI execution
 
-## 📁 Project Structure
-
-text src/ ├── main.rs ├── cli.rs ├── lib.rs ├── entry.rs ├── ignore.rs ├── readme.rs └── pdf.rs  tests/ ├── integration_test.rs └── system_cli.rs 
-
-## 👨‍💻 Development Policy
-
-- Keep functions small and focused.
-- Return results from functions whenever possible.
-- Eliminate all cargo clippy warnings.
-- Maintain a clear Git commit history.
-- Add tests for new functionality.
-
 ## 📄 License
 
 This project is licensed under the MIT License.
