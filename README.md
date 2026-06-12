@@ -1,25 +1,37 @@
-# peekls
+# 📂 peekls
 
-peekls is a CLI tool that provides a more meaningful directory listing than the standard ls command.
+peekls is a directory listing tool written in Rust that provides more meaningful information than the standard ls command.
 
-Instead of only displaying file and directory names, peekls can show additional information such as README taglines and PDF titles, helping users quickly understand the contents of a directory.
+Instead of displaying only file and directory names, peekls can show README taglines and PDF titles, helping users quickly understand the contents of a directory.
 
-## Features
+This project was developed as a learning project for Rust, software testing, and CLI application development.
 
-- Display files and directories
-- Long format listing (-l, --long)
-- Show hidden files (-a, --all)
-- Respect .gitignore rules
-- Show ignored files (--show-ignored)
-- Ignore specific files (-I, --ignore)
-- Display README taglines (--readme-tagline)
-- Display PDF titles (--pdf-title)
+## 🗣️ Overview
 
-## Installation
+peekls is designed to help users understand the purpose and contents of files without opening them.
 
-bash git clone https://github.com/kawai-225/peekls.git cd peekls cargo build 
+The tool extends traditional directory listing by providing lightweight previews such as:
 
-## Usage
+- README taglines
+- PDF titles
+- Ignore-aware listings
+
+## 🚀 Features
+
+- Directory Listing: Display files and directories.
+- Long Format: Show detailed information with -l.
+- Hidden Files: Display hidden files with -a.
+- Gitignore Support: Respects .gitignore rules by default.
+- Show Ignored Files: Display ignored files with --show-ignored.
+- Custom Ignore Rules: Hide specific files using -I.
+- README Preview: Show README taglines with --readme-tagline.
+- PDF Preview: Show PDF titles with --pdf-title.
+
+## 📦 Installation
+
+```bash git clone https://github.com/kawai-225/peekls.git cd peekls cargo build ```
+
+## 💻 Usage
 
 Display files and directories:
 
@@ -63,5 +75,49 @@ Display PDF titles:
 cargo run -- . --pdf-title
 ```
 
+## 📖 Example
 
+text Cargo.toml LICENSE README.md sample.pdf src  README: peekls  PDF: sample.pdf   Title: Sample Document 
 
+## 🧪 Testing
+
+### Run all tests
+
+bash cargo test 
+
+### Run static analysis
+
+bash cargo clippy 
+
+### Format source code
+
+bash cargo fmt 
+
+Current test coverage includes:
+
+- Unit Tests
+  - clean_line
+  - matches_custom_ignore
+  - is_hidden
+- Integration Tests
+  - list_directory
+- System Tests
+  - CLI execution
+
+## 📁 Project Structure
+
+text src/ ├── main.rs ├── cli.rs ├── lib.rs ├── entry.rs ├── ignore.rs ├── readme.rs └── pdf.rs  tests/ ├── integration_test.rs └── system_cli.rs 
+
+## 👨‍💻 Development Policy
+
+- Keep functions small and focused.
+- Return results from functions whenever possible.
+- Eliminate all cargo clippy warnings.
+- Maintain a clear Git commit history.
+- Add tests for new functionality.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+See the LICENSE file for detail
