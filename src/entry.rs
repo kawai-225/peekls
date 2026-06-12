@@ -71,3 +71,31 @@ fn entry_name(path: &Path) -> String {
         .to_string_lossy()
         .to_string()
 }
+//単体テスト
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn make_entry(name: &str) -> Entry {
+        Entry {
+            name: name.to_string(),
+            path: PathBuf::from(name),
+            size: 0,
+            kind: EntryKind::File,
+        }
+    }
+
+    #[test]
+    fn is_hidden_returns_true_for_dot_file() {
+        let entry = make_entry(".gitignore");
+
+        assert!(entry.is_hidden());
+    }
+
+    #[test]
+    fn is_hidden_returns_false_for_normal_file() {
+        let entry = make_entry("README.md");
+
+        assert!(!entry.is_hidden());
+    }
+}
