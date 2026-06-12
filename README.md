@@ -22,7 +22,7 @@ bash git clone https://github.com/kawai-225/peekls.git cd peekls cargo build
 ## Usage
 
 Display files and directories:
-
+:::
 bash cargo run -- . 
 
 Display detailed information:
@@ -49,44 +49,5 @@ Display PDF titles:
 
 bash cargo run -- . --pdf-title 
 
-## Example
 
-text Cargo.toml LICENSE README.md sample.pdf src  README: peekls  PDF: sample.pdf   Title: Sample Document 
 
-## Testing
-
-Run all tests:
-
-bash cargo test 
-
-Run static analysis:
-
-bash cargo clippy 
-
-Format source code:
-
-bash cargo fmt 
-
-## Project Structure
-
-text src/ ├── main.rs      # CLI entry point ├── cli.rs       # Command-line argument handling ├── lib.rs       # Core functionality ├── entry.rs     # File and directory information ├── ignore.rs    # .gitignore support ├── readme.rs    # README tagline extraction └── pdf.rs       # PDF title extraction  tests/ ├── integration_test.rs └── system_cli.rs 
-
-## Development Policy
-
-- Keep functions short and focused (approximately 20 lines or less)
-- Return results from functions whenever possible
-- Resolve all cargo clippy warnings
-- Maintain a clear Git commit history
-- Add tests for new functionality
-```
-:::
-
-これなら課題で要求されている
-
-- CLIツールの説明
-- 使用方法
-- テスト方法
-- ディレクトリ構成
-- 開発方針
-
-がすべて含まれていて、GitHubのREADMEとして十分見栄えがします。
