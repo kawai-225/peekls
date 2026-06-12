@@ -27,3 +27,30 @@ fn tagline_from_file(path: &Path) -> Option<String> {
 fn clean_line(line: &str) -> String {
     line.trim().trim_start_matches('#').trim().to_string()
 }
+
+//単体テスト
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn clean_line_removes_markdown_heading_marker() {
+        let result = clean_line("# peekls");
+
+        assert_eq!(result, "peekls");
+    }
+
+    #[test]
+    fn clean_line_trims_spaces() {
+        let result = clean_line("   peekls   ");
+
+        assert_eq!(result, "peekls");
+    }
+
+    #[test]
+    fn clean_line_removes_heading_marker_and_spaces() {
+        let result = clean_line("##   README tagline   ");
+
+        assert_eq!(result, "README tagline");
+    }
+}

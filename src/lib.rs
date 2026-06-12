@@ -45,3 +45,33 @@ pub fn list_directory(
 fn matches_custom_ignore(file_name: &str, patterns: &[String]) -> bool {
     patterns.iter().any(|pattern| pattern == file_name)
 }
+
+//単体テスト
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn matches_custom_ignore_returns_true() {
+        let patterns = vec![String::from("README.md")];
+
+        let result = matches_custom_ignore(
+            "README.md",
+            &patterns,
+        );
+
+        assert!(result);
+    }
+
+    #[test]
+    fn matches_custom_ignore_returns_false() {
+        let patterns = vec![String::from("README.md")];
+
+        let result = matches_custom_ignore(
+            "Cargo.toml",
+            &patterns,
+        );
+
+        assert!(!result);
+    }
+}
