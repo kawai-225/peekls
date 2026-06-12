@@ -24,6 +24,7 @@ bash git clone https://github.com/kawai-225/peekls.git cd peekls cargo build
 Display files and directories:
 :::
 bash cargo run -- . 
+:::
 
 Display detailed information:
 
