@@ -72,3 +72,6 @@ Cargo.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,macos,visualstudiocode
 
+docs/public/
+docs/.hugo_build.lock
+docs/themes/
