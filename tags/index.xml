@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on peekls</title>
+    <link>https://kawai-225.github.io/peekls/tags/</link>
+    <description>Recent content in Tags on peekls</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://kawai-225.github.io/peekls/tags/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
