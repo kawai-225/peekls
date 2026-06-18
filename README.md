@@ -75,7 +75,6 @@ git commit -m "Improve project README"
 git push
 ```
 
-で良いと思います。
 =======
 # 📂 peekls
 
