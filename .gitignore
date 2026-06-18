@@ -74,3 +74,4 @@ Cargo.lock
 
 docs/public/
 docs/.hugo_build.lock
+docs/themes/
