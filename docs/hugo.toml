@@ -1,0 +1,4 @@
+baseURL = "https://kawai-225.github.io/peekls/"
+languageCode = "en-us"
+title = "peekls"
+theme = "PaperMod"
