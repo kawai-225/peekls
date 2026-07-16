@@ -1,10 +1,11 @@
 # peekls
+
+This is a CLI tool that reimagines ls with smarter file listing and lightweight previews.
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Rust](https://img.shields.io/badge/Rust-1.70+-orange.svg)
 [![Coverage Status](https://coveralls.io/repos/github/kawai-225/peekls/badge.svg?branch=main)](https://coveralls.io/github/kawai-225/peekls?branch=main)
 
 
-This is a CLI tool that reimagines ls with smarter file listing and lightweight previews.
 
 
 ## Description
